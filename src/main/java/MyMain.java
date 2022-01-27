@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MyMain {
     // **************************
@@ -20,7 +21,26 @@ public class MyMain {
     // Tail recursive method:
     public static boolean binarySearchTR(int[] arr, int num, int lowerBound, int upperBound) {
         // YOUR CODE HERE
-        return false;
+        // if no numbers between lowerbound and upper
+        if(lowerBound >= upperBound){
+            return false;
+        }
+        if(lowerBound + 1 == upperBound){
+            return false;
+        }
+        else{
+            int middleIndex = (lowerBound + upperBound) / 2;
+            if(arr[middleIndex] == num){
+                return true;
+            }
+            else if (arr[middleIndex] > num){
+                return binarySearchTR(arr, num, lowerBound, middleIndex);
+            }
+            else{
+                return binarySearchTR(arr, num, middleIndex, upperBound);
+            }
+
+        }
     }
 
 
@@ -69,6 +89,32 @@ public class MyMain {
 
     public static int[] merge(int[] arr1, int[] arr2) {
         // YOUR CODE HERE
-        return null;
+        int[] arr = new int[arr1.length + arr2.length];
+        int idx1 =  0;
+        int idx2 = 0;
+        int idx = 0;
+        for(int i = 0; i < arr.length; i ++){
+            if(idx1 == arr1.length){ // if arr1 is done, just add the rest from arr2
+                arr[idx] = arr2[idx2];
+                idx ++;
+                idx2 ++;
+            }
+            else if(idx2 == arr2.length){ // if arr2 is done, just add rest from arr1
+                arr[idx] = arr1[idx1];
+                idx ++;
+                idx1 ++;
+            }
+            else if(arr1[idx1] < arr2[idx2]){ // if arr1 is less than arr2
+                arr[idx] = arr1[idx1];
+                idx ++;
+                idx1 ++;
+            }
+            else if(arr1[idx1] >= arr2[idx2]){
+                arr[idx] = arr2[idx2];
+                idx ++;
+                idx2 ++;
+            }
+        }
+        return arr;
     }
 }

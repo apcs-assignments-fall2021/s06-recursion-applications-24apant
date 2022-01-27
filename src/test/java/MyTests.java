@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MyTests {
+public class    MyTests {
     @Test
     public void testBinarySearch() {
         assertEquals(true, MyMain.binarySearch(new int[] {1, 2, 4, 5, 7, 8, 10}, 2), "Whether or not the array [1, 2, 4, 5, 7, 8, 10] contains 2 should be: true");

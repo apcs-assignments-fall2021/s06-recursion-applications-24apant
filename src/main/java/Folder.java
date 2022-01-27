@@ -42,7 +42,12 @@ public class Folder implements FileItem {
     // Then, the size of folder1 = 512 + 128*3 + 200 + 300 + 150 = 1546.
     public int calculateSize() {
         // YOUR CODE HERE
-        return -1;
+        int size = 512;
+        for (int i = 0; i < items.size(); i++) {
+            FileItem item = items.get(i);
+            size += item.calculateSize() + 128;
+        }
+        return size;
     }
 
     // Creates a copy of the current FileItem
@@ -56,7 +61,11 @@ public class Folder implements FileItem {
     // that the contents of the folder is copied as well.
     public FileItem copy() {
         // YOUR CODE HERE
-        return null;
+        Folder f = new Folder(this.folderName + "_copy");
+        for (FileItem item : items) {
+            f.addToFolder(item.copy());
+        }
+        return f;
     }
 
     // toString method

@@ -24,8 +24,7 @@ public class File implements FileItem {
     // Because this is just a single file, this creates a new file with the same
     // name + "_copy" and the same size
     public FileItem copy() {
-        File fileCopy = new File(this.fileName + "_copy", this.size);
-        return fileCopy;
+        return new File(this.fileName + "_copy", this.size);
     }
 
     // toString method
